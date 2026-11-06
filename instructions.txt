@@ -1,0 +1,11 @@
+Task2. Design and Implement ttt for 3x3 ttt board, for human-machine with Alpha-Beta pruning (or some heuristics).
+
+Task3. Design and Implement ttt for 3x3 ttt board, for machine-machine (2M) with MiniMax Alpha-Beta pruning. Provide user-interface to provide an integer (1-10) to play the game N times. At the end of N games, display how many times one player wins or loses.
+
+Task4. Design and Implement ttt for 4x4 ttt board, for 3 machine-players (3M) with MiniMax. Provide user-interface to provide an integer (1-10) to play the game N times. At the end of N games, update and display the scoreboard of how many times each player wins or loses or draws (no one is won).
+
+Task5. Design and Implement ttt for BxB ttt board for B=3..10, for M machine-players (where M=3) with MiniMax. Provide user-interface to provide an integer N (for 1..10) to play the game N times. At the end of N games, update and display the scoreboard of how many times each player wins or loses or draws (no one is won). You may need a heuristic (or a few) to avoid a shortage of memory as the search space gets bigger. If the game stops due to the memory shortage, please note it in your document (stating when it is running with BxB ttt board for N-players). 
+
+Score: Task1 100 points. Task2 500 points. Task3 500 points. Task4 300 points. Task5 600 points. - Total 2000 points.
+
+Submission. Submit (1) Project report (a word document) and (2) zip file of each task folder containing all the work done for the task (including codes, session-history log or screenshots). 
