@@ -153,7 +153,6 @@ window.onload = function() {
 		//symbol = ['X','','O','O','','O','','X','X'], 'O'
 		//nextMove = {id:4,score:10}
 		var nextMove = miniMax(symbol,ai, -1000, 1000); //object that stores id of next move and score of the box for next move
-		console.log(nextMove)
 		var nextId = "canvas" + (nextMove.id + 1);
 		box = document.getElementById(nextId);
 		ctx = box.getContext("2d");
