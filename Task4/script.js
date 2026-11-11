@@ -129,6 +129,7 @@ window.onload = function() {
 			//This displays the final results of the game from the perspective of AI1 or ai
 			//document.getElementById("result").innerText = "Games won by AI (O): " + gamesWon + ", Games lost by AI (O): " + (numGames - (gamesDrawn + gamesWon)) + ", Games Drawn: " + gamesDrawn;
 			result = document.getElementById("result");//.innerText = "Games won by AI (O): " + gamesWon + ", Games lost by AI (O): " + (numGames - (gamesDrawn + gamesWon)) + ", Games Drawn: " + gamesDrawn;
+			result.innerHTML ="";
 			wins = document.createElement("div");
 			draws = document.createElement("div");
 			draws.innerText = gamesDrawn;
@@ -336,39 +337,19 @@ window.onload = function() {
 		var nextMove = miniMax(symbol,whichAi,4); //object that stores id of next move and score of the box for next move
 		//RESCURSIVE FUNCTION
 
-		//AI CHECK FOR missing object
-		// if(nextMove.id === undefined){
-		// 	return;
-		// }
-
 		var nextId = "canvas" + (nextMove.id + 1);
 		box = document.getElementById(nextId);
 		ctx = box.getContext("2d");
 
 		//new general draw function!
 		draw(ais[whichAi],nextMove.id);
-		// if(whichAi === 'X') { //Checks if its ai2's turn or if its ai's turn
-		// 	drawX(nextMove.id);
-		// }
-		// else{
-		// 	drawO(nextMove.id);
-		// }
-		
-
+	
 		turn++;
-		//KILL IF INFINITE LOOP
-		// if(turn >100){
-		// 	//console.log("oof");
-		// 	return;
-		// }
+	
 		filled[nextMove.id] = true;
 
 		//winner check - ai wins and draws, the return there is so they dont run on a completed board
 		if(winnerCheck(symbol, ais[whichAi])) {
-			// if(whichAi === ai){
-			// 	gamesWon += 1;
-			// }
-
 			//TASK5
 			gamesWon[whichAi] += 1;
 			return;
@@ -378,12 +359,6 @@ window.onload = function() {
 			return;
 		}
 		else{ //next player will play
-			// if(whichAi === ais[ai2]) { 
-			// 	playAI(ais[ai]);
-			// }
-			// else{
-			// 	playAI(ais[ai2]);
-			// }
 			newPlayer = (whichAi+ 1) % players;
 			//console.log(newPlayer);
 			playAI(newPlayer);
@@ -567,7 +542,7 @@ function miniMax(newSymbol, player, depth) {
 
     var empty = emptyBoxes(newSymbol);
 
-    var scores = Array(players).fill(0);
+    var scores = Array(players).fill(-2000);
 
     // Terminal state: someone won
     for (var i = 0; i < players; i++) {
