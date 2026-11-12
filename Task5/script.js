@@ -192,7 +192,7 @@ window.onload = function() {
 			result.innerHTML = "";
 			wins = document.createElement("div");
 			draws = document.createElement("div");
-			draws.innerText = gamesDrawn;
+			draws.innerText = "Draws: " + gamesDrawn;
 			losses = document.createElement("div");
 			totalWins = 0;
 			for(var i = 0; i < players; i++){
@@ -394,7 +394,7 @@ window.onload = function() {
 	function playAI(whichAi) {
 		//symbol = ['X','','O','O','','O','','X','X'], 'O'
 		//nextMove = {id:4,score:10}
-		var nextMove = miniMax(symbol,whichAi,4); //object that stores id of next move and score of the box for next move
+		var nextMove = miniMax(symbol,whichAi,Math.max(Math.min(10 - b,4),1)); //object that stores id of next move and score of the box for next move
 		//RESCURSIVE FUNCTION
 
 		//AI CHECK FOR missing object
@@ -625,6 +625,7 @@ function evaluateBoard(boardState) {
 
 function miniMax(newSymbol, player, depth) {
     miniMaxCall++;
+		//depth = Math.max(1, depth);
 
     var empty = emptyBoxes(newSymbol);
 
