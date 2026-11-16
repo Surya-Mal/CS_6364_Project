@@ -31,25 +31,42 @@ window.onload = function() {
 	//generate winners
 	for(var i = 0; i < b; i++){
 		//first row
-		row = [];
+		//row = [];
 		//first col
-		col = [];
-		for(var j = 0; j < b; j++){
-			row.push(i*b + j);
-			col.push(j * b + i);
+		//col = [];
+		for(var j = 0; j < b - 2; j++){
+				row = [];
+				//first col
+				col = [];
+				row.push(i*b + j);
+				row.push(i*b + j + 1);
+				row.push(i*b + j + 2);
+				col.push(j * b + i);
+				col.push((j + 1) * b + i);
+				col.push((j + 2)*  b + i);
+				winner.push(row);
+				winner.push(col);
 		}
-		winner.push(row);
-		winner.push(col);
+		//winner.push(row);
+		//winner.push(col);
 	}
 	//both diagonals
-	diag1 = [];
-	diag2 = [];
-	for(var i = 0; i < b; i++){
-		diag1.push(i + i * b);
-		diag2.push((b - 1) * (i + 1));
+	// diag1 = [];
+	// diag2 = [];
+	for(var i = 0; i < b - 2; i++){
+			diag1 = [];
+			diag2 = [];
+			diag1.push(i * (b + 1));
+			diag1.push((i + 1)* (b + 1));
+			diag1.push((i +2)* (b + 1));
+			diag2.push((b - 1) * (i + 1));
+			diag2.push((b - 1) * (i + 2));
+			diag2.push((b - 1) * (i + 3));
+			winner.push(diag1);
+			winner.push(diag2);
 	}
-	winner.push(diag1);
-	winner.push(diag2);
+	// winner.push(diag1);
+	// winner.push(diag2);
 
 	//set board
 	board = document.getElementById("tic");
@@ -97,7 +114,7 @@ window.onload = function() {
 	//newGame - event + function
 	var n = document.getElementById("new");
 	n.addEventListener("click",newGame);
-	
+	var totalGames = 0;
 	var numGames; //This is the number of games chosen by the user for the games the AI need to play
 	var gamesWon; //This is the number of games AI1 won
 	var gamesDrawn; //The number of games that were draws
@@ -116,6 +133,7 @@ window.onload = function() {
 	inputSubmit.addEventListener("click", () => {
 		if(userInput.value >= 1 && userInput.value <= 10){
 			numGames = parseInt(userInput.value);
+			totalGames += numGames;
 			//gamesWon = 0;
 			gamesDrawn = 0;
 			clearBoard();
@@ -146,7 +164,7 @@ window.onload = function() {
 				wins.appendChild(win);
 				//draws.innerText = gamesDrawn[i];
 				loss = document.createElement("div");
-				loss.innerText = "# of losses for AI" + i + ": " + (numGames - (gamesWon[i] + gamesDrawn));
+				loss.innerText = "# of losses for AI" + i + ": " + (totalGames - (gamesWon[i] + gamesDrawn));
 				losses.appendChild(loss);
 			}
 			result.appendChild(wins);
