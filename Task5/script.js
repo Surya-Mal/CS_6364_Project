@@ -435,7 +435,7 @@ window.onload = function() {
 	function playAI(whichAi) {
 		//symbol = ['X','','O','O','','O','','X','X'], 'O'
 		//nextMove = {id:4,score:10}
-		var nextMove = miniMax(symbol,whichAi,Math.max(Math.min(10 - b,4),1)); //object that stores id of next move and score of the box for next move
+		var nextMove = miniMax(symbol,whichAi,Math.max(Math.min(9 - b,4),2)); //object that stores id of next move and score of the box for next move
 		//RESCURSIVE FUNCTION
 
 		//AI CHECK FOR missing object
